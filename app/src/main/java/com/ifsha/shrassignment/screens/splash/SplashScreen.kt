@@ -11,21 +11,21 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.ifsha.shrassignment.Authentication
+import com.ifsha.shrassignment.Home
 import com.ifsha.shrassignment.R
-import com.ifsha.shrassignment.screens.authentication.AuthenticationScreen
 
 @Composable
 fun SplashScreen(
     navController: NavController,
-    splashViewModel: SplashViewModel = viewModel()
+    splashViewModel: SplashViewModel = hiltViewModel()
 ) {
     LaunchedEffect(splashViewModel.isUserLoggedIn) {
         if (splashViewModel.isUserLoggedIn.value) {
-
+            navController.navigate(Home)
         } else {
             navController.navigate(Authentication)
         }

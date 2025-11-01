@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.ifsha.shrassignment.screens.authentication.AuthenticationScreen
+import com.ifsha.shrassignment.screens.home.HomeScreen
 import com.ifsha.shrassignment.screens.splash.SplashScreen
 import kotlinx.serialization.Serializable
 
@@ -13,6 +14,9 @@ object Splash
 
 @Serializable
 object Authentication
+
+@Serializable
+object Home
 
 @Composable
 fun AppNavHost(navController: NavHostController) {
@@ -26,6 +30,10 @@ fun AppNavHost(navController: NavHostController) {
 
         composable<Authentication> {
             AuthenticationScreen(navController)
+        }
+
+        composable<Home> {
+            HomeScreen(navController)
         }
     }
 }
