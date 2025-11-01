@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SHRAssignment</string>
+
+    <string name="login_with_google">Login With Google</string>
 </resources>
