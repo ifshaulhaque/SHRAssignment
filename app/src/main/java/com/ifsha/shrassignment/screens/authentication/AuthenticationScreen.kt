@@ -23,7 +23,6 @@ import androidx.navigation.compose.rememberNavController
 import com.ifsha.shrassignment.Home
 import com.ifsha.shrassignment.R
 import com.ifsha.shrassignment.Splash
-import com.ifsha.shrassignment.screens.home.HomeMain
 
 @Composable
 fun AuthenticationScreen(

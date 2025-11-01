@@ -1,19 +1,41 @@
-package com.ifsha.shrassignment.screens.home_main
+package com.ifsha.shrassignment.components.histogram
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.ifsha.shrassignment.enums.WeekDay
-import com.ifsha.shrassignment.components.histogram.HistogramCard
-import com.ifsha.shrassignment.components.histogram.HistogramItemModel
+import com.ifsha.shrassignment.extensions.setHeight
 
 @Composable
-fun HomeMainScreen(
-    navController: NavController
+fun WeekHistogram(
+    weekDayList: List<HistogramItemModel>
 ) {
-    HistogramCard(
+    weekDayList.setHeight()
+    
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.Bottom,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        for (item in weekDayList) {
+            HistogramItem(histogramItemModel = item)
+        }
+    }
+}
+
+@Composable
+@Preview
+fun WeekHistogramPreview() {
+    WeekHistogram(
         weekDayList = listOf(
+            HistogramItemModel(
+                weekDay = WeekDay.FRIDAY,
+                score = 12,
+            ),
             HistogramItemModel(
                 weekDay = WeekDay.SATURDAY,
                 score = 7,
@@ -38,16 +60,6 @@ fun HomeMainScreen(
                 weekDay = WeekDay.THURSDAY,
                 score = 4,
             ),
-            HistogramItemModel(
-                weekDay = WeekDay.FRIDAY,
-                score = 12,
-            ),
-        )
+        ) 
     )
-}
-
-@Composable
-@Preview(showBackground = true, showSystemUi = true)
-fun HomeMainScreenPreview() {
-    HomeMainScreen(rememberNavController())
 }
