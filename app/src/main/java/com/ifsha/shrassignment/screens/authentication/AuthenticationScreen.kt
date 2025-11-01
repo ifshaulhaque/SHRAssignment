@@ -22,6 +22,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.ifsha.shrassignment.Home
 import com.ifsha.shrassignment.R
+import com.ifsha.shrassignment.Splash
+import com.ifsha.shrassignment.screens.home.HomeMain
 
 @Composable
 fun AuthenticationScreen(
@@ -34,7 +36,9 @@ fun AuthenticationScreen(
     LaunchedEffect(Unit) {
         authenticationViewModel.isLoggedIn.collect {
             if (it) {
-                navController.navigate(Home)
+                navController.navigate(Home) {
+                    popUpTo<Splash> { inclusive = true }
+                }
             }
         }
     }
