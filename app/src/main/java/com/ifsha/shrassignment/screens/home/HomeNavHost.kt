@@ -1,6 +1,7 @@
 package com.ifsha.shrassignment.screens.home
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -10,7 +11,10 @@ import com.ifsha.shrassignment.screens.profile.ProfileScreen
 import kotlinx.serialization.Serializable
 
 @Composable
-fun HomeNavHost(navHostController: NavHostController) {
+fun HomeNavHost(
+    navHostController: NavHostController,
+    mainNavController: NavController
+) {
     NavHost(
         navController = navHostController,
         startDestination = HomeMain
@@ -24,7 +28,7 @@ fun HomeNavHost(navHostController: NavHostController) {
         }
 
         composable<Profile> {
-            ProfileScreen(navHostController)
+            ProfileScreen(navHostController, mainNavController)
         }
     }
 }

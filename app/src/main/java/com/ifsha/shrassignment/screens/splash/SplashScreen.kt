@@ -30,7 +30,9 @@ fun SplashScreen(
                 popUpTo<Splash> { inclusive = true }
             }
         } else {
-            navController.navigate(Authentication)
+            navController.navigate(Authentication) {
+                popUpTo<Splash> { inclusive = true }
+            }
         }
     }
 
